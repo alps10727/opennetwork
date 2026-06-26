@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Network — Mobile-first, value-backed mining</title>
+<meta name="description" content="Open Network is a mobile-first crypto network where everyday participation creates real, auditable value. Mine with a tap, build trust, and govern an open economy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A3B2A; --ink-2:#123F2E;
+  --green:#128A4E; --green-600:#0F7A45;
+  --leaf:#2FB86B; --lime:#5BE38A;
+  --mint:#E7F6EE; --mint-2:#D6F0E0;
+  --paper:#F5FAF6; --white:#FFFFFF;
+  --muted:#54675D; --soft:#7E8E85;
+  --line:#E1EEE7;
+  --display:'Space Grotesk',system-ui,sans-serif;
+  --body:'DM Sans',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --maxw:1180px;
+  --r:18px;
+  --shadow:0 1px 2px rgba(10,59,42,.04),0 12px 32px -12px rgba(10,59,42,.14);
+  --shadow-lg:0 2px 6px rgba(10,59,42,.05),0 30px 60px -22px rgba(10,59,42,.28);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--body);color:var(--ink);background:var(--paper);
+  line-height:1.62;font-size:17px;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono)}
+.eyebrow{
+  font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--green);display:inline-flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--leaf);border-radius:2px}
+.eyebrow.dim{color:var(--soft)}
+.eyebrow.dim::before{background:var(--mint-2)}
+
+/* ---------- NAV ---------- */
+header.nav{position:sticky;top:0;z-index:60;background:rgba(245,250,246,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em}
+.brand .mark{width:30px;height:30px;flex:none}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:14.5px;font-weight:500;color:var(--ink-2);opacity:.78;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:600;font-size:15px;border:none;cursor:pointer;border-radius:100px;padding:12px 22px;transition:transform .15s ease,box-shadow .2s ease,background .2s}
+.btn-primary{background:var(--green);color:#fff;box-shadow:0 6px 18px -6px rgba(18,138,78,.6)}
+.btn-primary:hover{background:var(--green-600);transform:translateY(-1px);box-shadow:0 10px 24px -8px rgba(18,138,78,.7)}
+.btn-ghost{background:var(--white);color:var(--ink);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--leaf);color:var(--green)}
+.btn-sm{padding:9px 18px;font-size:14px}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;width:42px;height:42px;cursor:pointer;align-items:center;justify-content:center}
+.burger span{display:block;width:18px;height:2px;background:var(--ink);position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:74px 0 40px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;
+  background:
+   radial-gradient(640px 420px at 78% 8%, rgba(91,227,138,.22), transparent 60%),
+   radial-gradient(720px 520px at 12% 92%, rgba(18,138,78,.10), transparent 62%);}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.tag-live{display:inline-flex;align-items:center;gap:9px;background:var(--white);border:1px solid var(--line);border-radius:100px;padding:7px 14px 7px 11px;font-size:13px;font-weight:600;color:var(--ink-2);box-shadow:var(--shadow)}
+.dot-live{width:8px;height:8px;border-radius:50%;background:var(--leaf);box-shadow:0 0 0 0 rgba(47,184,107,.5);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(47,184,107,.5)}70%{box-shadow:0 0 0 9px rgba(47,184,107,0)}100%{box-shadow:0 0 0 0 rgba(47,184,107,0)}}
+h1.hero-title{font-size:clamp(40px,5.4vw,66px);font-weight:700;margin:22px 0 0;letter-spacing:-.03em}
+h1.hero-title em{font-style:normal;color:var(--green);position:relative;white-space:nowrap}
+.hero-sub{font-size:19px;color:var(--muted);max-width:520px;margin:22px 0 30px;line-height:1.6}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:34px;margin-top:40px;flex-wrap:wrap}
+.hstat .num{font-family:var(--display);font-weight:700;font-size:30px;color:var(--ink);letter-spacing:-.02em}
+.hstat .lbl{font-size:13px;color:var(--soft);font-weight:500;margin-top:2px}
+
+/* phone */
+.hero-visual{position:relative;display:flex;justify-content:center}
+.constellation{position:absolute;inset:-40px -30px;z-index:0;opacity:.9}
+.phone{position:relative;z-index:2;width:288px;height:586px;border-radius:42px;background:linear-gradient(170deg,#0E4530,#0A3B2A);padding:13px;box-shadow:var(--shadow-lg);border:1px solid rgba(255,255,255,.06)}
+.phone::after{content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);width:96px;height:22px;background:#06271b;border-radius:0 0 16px 16px;z-index:5}
+.screen{width:100%;height:100%;background:linear-gradient(180deg,#F7FBF8,#EAF6EF);border-radius:32px;overflow:hidden;display:flex;flex-direction:column;padding:30px 20px 20px;position:relative}
+.scr-top{display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.scr-top .bal-lbl{font-size:11px;color:var(--soft);font-weight:600;text-transform:uppercase;letter-spacing:.1em}
+.scr-streak{display:flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:100px;padding:4px 10px;font-size:11px;font-weight:700;color:var(--green)}
+.scr-bal{font-family:var(--display);font-weight:700;font-size:34px;margin:12px 0 2px;letter-spacing:-.02em}
+.scr-bal span{font-size:15px;color:var(--soft);font-weight:600}
+.scr-rate{font-family:var(--mono);font-size:12px;color:var(--green);font-weight:600}
+.surge{margin:16px 0 0;background:linear-gradient(100deg,var(--green),var(--leaf));color:#fff;border-radius:14px;padding:11px 14px;display:flex;justify-content:space-between;align-items:center}
+.surge .s-t{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.92}
+.surge .s-time{font-family:var(--mono);font-size:14px;font-weight:700}
+.mine-zone{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.mine-btn{width:148px;height:148px;border-radius:50%;background:radial-gradient(circle at 50% 38%,#34D17E,#0F7A45);box-shadow:0 18px 40px -12px rgba(15,122,69,.6),inset 0 2px 8px rgba(255,255,255,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;position:relative}
+.mine-btn::before{content:"";position:absolute;inset:-12px;border-radius:50%;border:2px solid var(--leaf);opacity:.5;animation:ring 2.4s ease-out infinite}
+@keyframes ring{0%{transform:scale(.92);opacity:.55}100%{transform:scale(1.18);opacity:0}}
+.mine-btn .mb-ico{font-size:30px}
+.mine-btn .mb-t{font-size:13px;font-weight:700;margin-top:4px;letter-spacing:.02em}
+.mine-cap{font-size:11px;color:var(--soft);text-align:center;max-width:160px}
+.scr-nav{display:flex;justify-content:space-around;padding-top:12px;border-top:1px solid var(--line);font-size:10px;color:var(--soft)}
+.scr-nav b{display:block;font-size:16px;color:var(--ink);margin-bottom:1px}
+.scr-nav .on b{color:var(--green)}
+
+/* logos strip */
+.proof{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--white)}
+.proof-inner{display:flex;align-items:center;gap:34px;padding:20px 0;flex-wrap:wrap;justify-content:space-between}
+.proof-inner .p-lbl{font-size:13px;color:var(--soft);font-weight:600;white-space:nowrap}
+.proof-pills{display:flex;gap:10px;flex-wrap:wrap}
+.pp{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:100px;padding:8px 15px;font-size:13.5px;font-weight:600;color:var(--ink-2)}
+.pp svg{flex:none}
+
+/* ---------- SECTION SHELL ---------- */
+.section{padding:96px 0;position:relative}
+.section.alt{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.s-head{max-width:720px;margin-bottom:48px}
+.s-head h2{font-size:clamp(30px,3.8vw,46px);margin:18px 0 0;font-weight:700}
+.s-head p{font-size:19px;color:var(--muted);margin-top:18px}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+.center .eyebrow{justify-content:center}
+
+/* problem cards */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:30px;transition:transform .2s ease,box-shadow .25s ease,border-color .2s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--mint-2)}
+.card .ico{width:46px;height:46px;border-radius:13px;background:var(--mint);display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:var(--green)}
+.card h3{font-size:20px;margin-bottom:9px}
+.card p{font-size:15.5px;color:var(--muted)}
+.card .k{font-family:var(--mono);font-size:12px;color:var(--soft);display:block;margin-bottom:14px;font-weight:500}
+
+/* solution split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.principle{display:flex;gap:18px;padding:22px 0;border-top:1px solid var(--line)}
+.principle:first-of-type{border-top:none;padding-top:0}
+.principle .pn{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--green);flex:none;width:34px;padding-top:3px}
+.principle h4{font-size:19px;margin-bottom:6px}
+.principle p{font-size:15.5px;color:var(--muted)}
+.panel{background:linear-gradient(165deg,var(--ink),#0E4933);border-radius:24px;padding:38px;color:#dff3e7;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.panel::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(91,227,138,.22),transparent 70%);top:-80px;right:-60px}
+.panel h3{color:#fff;font-size:23px;margin-bottom:8px}
+.panel .pmono{font-family:var(--mono);font-size:12.5px;color:var(--lime);letter-spacing:.04em}
+.panel ul{list-style:none;margin-top:24px;position:relative;z-index:1}
+.panel li{display:flex;gap:12px;padding:11px 0;border-top:1px solid rgba(255,255,255,.1);font-size:15px}
+.panel li:first-child{border-top:none}
+.panel li svg{flex:none;margin-top:3px;color:var(--lime)}
+
+/* PoAV */
+.poav-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:34px}
+.vp{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:26px;position:relative;overflow:hidden}
+.vp .w{position:absolute;top:18px;right:20px;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--leaf);background:var(--mint);padding:3px 9px;border-radius:8px}
+.vp .vico{font-size:24px;margin-bottom:14px}
+.vp h4{font-size:18px;margin-bottom:7px}
+.vp p{font-size:14px;color:var(--muted)}
+.formula{background:var(--ink);border-radius:18px;padding:28px 32px;color:#eafaf1;font-family:var(--mono);font-size:15px;line-height:2;overflow-x:auto;box-shadow:var(--shadow-lg)}
+.formula .c{color:var(--lime)}
+.formula .d{color:#8fb9a6}
+.formula .small{font-size:12.5px;color:#8fb9a6;display:block;margin-top:10px;line-height:1.7}
+
+/* value bridge flow */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:10px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--white)}
+.flow .step{padding:30px 24px;position:relative;border-right:1px solid var(--line)}
+.flow .step:last-child{border-right:none}
+.flow .step .fn{font-family:var(--mono);font-size:12px;color:var(--soft);font-weight:600}
+.flow .step .fi{width:42px;height:42px;border-radius:12px;background:var(--mint);color:var(--green);display:flex;align-items:center;justify-content:center;margin:14px 0 14px}
+.flow .step h4{font-size:17px;margin-bottom:6px}
+.flow .step p{font-size:14px;color:var(--muted)}
+.flow .step::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:var(--leaf);font-size:20px;background:var(--white);z-index:3;width:22px;text-align:center}
+.flow .step:last-child::after{display:none}
+
+/* tokenomics */
+.tok-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
+.donut-wrap{display:flex;align-items:center;gap:30px}
+.donut{width:240px;height:240px;flex:none;border-radius:50%;
+  background:conic-gradient(
+    var(--green) 0 60%,
+    var(--leaf) 60% 73%,
+    #7CD3A2 73% 85%,
+    var(--ink) 85% 100%);
+  position:relative;box-shadow:var(--shadow)}
+.donut::after{content:"";position:absolute;inset:30%;background:var(--white);border-radius:50%;box-shadow:inset 0 1px 6px rgba(10,59,42,.08)}
+.donut .center-l{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:2}
+.donut .center-l b{font-family:var(--display);font-size:24px;color:var(--ink)}
+.donut .center-l span{font-size:11px;color:var(--soft);font-family:var(--mono);letter-spacing:.05em}
+.legend{display:flex;flex-direction:column;gap:14px}
+.legend .li{display:flex;align-items:center;gap:11px;font-size:14.5px}
+.legend .sw{width:13px;height:13px;border-radius:4px;flex:none}
+.legend .li b{margin-left:auto;font-family:var(--mono);font-weight:700;font-size:14px}
+.tok-facts{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fct{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:20px}
+.fct .fl{font-size:12px;color:var(--soft);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.fct .fv{font-family:var(--display);font-size:22px;font-weight:700;margin-top:5px}
+.fct .fv small{font-family:var(--mono);font-size:13px;color:var(--muted);font-weight:500}
+
+table.dt{width:100%;border-collapse:collapse;margin-top:30px;background:var(--white);border-radius:var(--r);overflow:hidden;border:1px solid var(--line);font-size:14.5px}
+table.dt th,table.dt td{padding:15px 20px;text-align:left;border-bottom:1px solid var(--line)}
+table.dt th{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--soft);font-weight:600;background:var(--paper)}
+table.dt td.mono{font-family:var(--mono);font-weight:600}
+table.dt tr:last-child td{border-bottom:none}
+table.dt td .swt{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:9px;vertical-align:middle}
+
+/* architecture */
+.arch{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.layer{padding:28px;border-right:1px solid var(--line);background:var(--white)}
+.layer:last-child{border-right:none}
+.layer .ln{font-family:var(--mono);font-size:11px;color:var(--soft);letter-spacing:.1em;text-transform:uppercase}
+.layer h4{font-size:18px;margin:10px 0 8px}
+.layer p{font-size:14px;color:var(--muted)}
+.layer .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.chip{font-family:var(--mono);font-size:11.5px;background:var(--mint);color:var(--green);padding:4px 10px;border-radius:7px;font-weight:500}
+
+/* roadmap */
+.road{position:relative;margin-top:14px}
+.road::before{content:"";position:absolute;left:26px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--leaf),var(--mint-2));}
+.phase{position:relative;padding:0 0 36px 76px}
+.phase:last-child{padding-bottom:0}
+.phase .pnode{position:absolute;left:14px;top:0;width:26px;height:26px;border-radius:50%;background:var(--white);border:2px solid var(--leaf);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:700;color:var(--green);z-index:2}
+.phase.done .pnode{background:var(--green);border-color:var(--green);color:#fff}
+.phase.now .pnode{background:var(--leaf);border-color:var(--leaf);color:#06271b;box-shadow:0 0 0 6px rgba(91,227,138,.22)}
+.phase .ph-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.phase h4{font-size:20px}
+.phase .ph-tag{font-family:var(--mono);font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;letter-spacing:.05em}
+.tag-done{background:var(--mint);color:var(--green)}
+.tag-now{background:var(--leaf);color:#06271b}
+.tag-next{background:#EEF3F0;color:var(--soft)}
+.phase p{font-size:15px;color:var(--muted);max-width:680px}
+.phase .deliver{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.phase .deliver span{font-size:12.5px;background:var(--white);border:1px solid var(--line);border-radius:8px;padding:5px 11px;color:var(--ink-2);font-weight:500}
+
+/* governance steps */
+.gov{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+
+/* whitepaper */
+.wp{display:grid;grid-template-columns:248px 1fr;gap:48px;align-items:start}
+.wp-toc{position:sticky;top:88px;border:1px solid var(--line);border-radius:var(--r);padding:22px;background:var(--white);max-height:calc(100vh - 120px);overflow:auto}
+.wp-toc .tt{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--soft);margin-bottom:14px}
+.wp-toc a{display:block;font-size:13.5px;color:var(--ink-2);padding:6px 0;opacity:.82;transition:.18s;border-left:2px solid transparent;padding-left:12px;margin-left:-2px}
+.wp-toc a:hover{opacity:1;color:var(--green);border-color:var(--leaf)}
+.wp-doc{min-width:0}
+.chapter{border:1px solid var(--line);border-radius:var(--r);background:var(--white);margin-bottom:14px;overflow:hidden}
+.chapter > summary{list-style:none;cursor:pointer;padding:22px 26px;display:flex;align-items:center;gap:16px;user-select:none}
+.chapter > summary::-webkit-details-marker{display:none}
+.chapter > summary .cn{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--green);background:var(--mint);width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex:none}
+.chapter > summary h3{font-size:20px;flex:1}
+.chapter > summary .chev{flex:none;transition:transform .25s;color:var(--soft)}
+.chapter[open] > summary .chev{transform:rotate(180deg)}
+.chapter[open] > summary{border-bottom:1px solid var(--line)}
+.cbody{padding:8px 26px 28px;color:var(--ink-2)}
+.cbody h4{font-family:var(--display);font-size:16.5px;color:var(--ink);margin:24px 0 8px}
+.cbody h4 .sub{font-family:var(--mono);font-size:12px;color:var(--green);margin-right:8px;font-weight:600}
+.cbody p{font-size:15.5px;color:var(--muted);margin:8px 0}
+.cbody ul{margin:10px 0 10px 4px;list-style:none}
+.cbody li{font-size:15px;color:var(--muted);padding:5px 0 5px 22px;position:relative}
+.cbody li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:7px;border-radius:2px;background:var(--leaf)}
+.cbody li b{color:var(--ink-2)}
+.cbody .note{background:var(--paper);border-left:3px solid var(--leaf);border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0;font-size:14.5px;color:var(--ink-2)}
+.cbody .eq{font-family:var(--mono);font-size:14px;background:var(--ink);color:#eafaf1;padding:16px 20px;border-radius:12px;margin:14px 0;overflow-x:auto;line-height:1.9}
+.cbody .eq .c{color:var(--lime)}
+.cbody table{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0}
+.cbody table th,.cbody table td{border:1px solid var(--line);padding:10px 12px;text-align:left}
+.cbody table th{background:var(--paper);font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--soft)}
+.cbody table td.m{font-family:var(--mono)}
+
+/* CTA band */
+.cta-band{background:linear-gradient(160deg,var(--ink),#0E4933);color:#dff3e7;text-align:center;border-radius:30px;padding:64px 32px;position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
+.cta-band::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(91,227,138,.18),transparent 65%);top:-220px;left:50%;transform:translateX(-50%)}
+.cta-band h2{color:#fff;font-size:clamp(30px,4vw,46px);position:relative;z-index:1}
+.cta-band p{font-size:19px;max-width:560px;margin:18px auto 32px;color:#bfe3cf;position:relative;z-index:1}
+.cta-band .hero-cta{justify-content:center;position:relative;z-index:1}
+.btn-lime{background:var(--lime);color:#06271b}
+.btn-lime:hover{background:#7CEFA1;transform:translateY(-1px)}
+.btn-outline-l{background:transparent;color:#eafaf1;border:1px solid rgba(255,255,255,.3)}
+.btn-outline-l:hover{border-color:var(--lime);color:#fff}
+
+/* footer */
+footer{background:var(--white);border-top:1px solid var(--line);padding:64px 0 36px;margin-top:0}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;margin-bottom:44px}
+.foot-brand .brand{margin-bottom:14px}
+.foot-brand p{font-size:14.5px;color:var(--muted);max-width:300px}
+.fcol h5{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--soft);margin-bottom:16px}
+.fcol a{display:block;font-size:14.5px;color:var(--ink-2);opacity:.8;padding:5px 0;transition:.18s}
+.fcol a:hover{opacity:1;color:var(--green)}
+.disclaimer{border-top:1px solid var(--line);padding-top:26px;font-size:12.5px;color:var(--soft);line-height:1.7;max-width:980px}
+.disclaimer strong{color:var(--ink-2)}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;margin-top:26px;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--soft)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* responsive */
+@media (max-width:980px){
+  .hero-grid,.split,.tok-grid,.wp{grid-template-columns:1fr;gap:40px}
+  .grid-3,.poav-grid,.flow,.arch,.gov{grid-template-columns:1fr 1fr}
+  .flow .step::after{display:none}
+  .flow .step:nth-child(2n){border-right:none}
+  .wp-toc{position:static;max-height:none}
+  .hero-visual{order:-1}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:680px){
+  body{font-size:16px}
+  .nav-links{display:none}
+  .burger{display:flex}
+  .nav-links.open{display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;background:var(--white);border-bottom:1px solid var(--line);padding:18px 24px;gap:6px;box-shadow:var(--shadow)}
+  .nav-links.open a{padding:10px 0;opacity:1}
+  .grid-3,.grid-2,.poav-grid,.flow,.arch,.gov,.tok-facts,.foot-grid{grid-template-columns:1fr}
+  .flow .step{border-right:none;border-bottom:1px solid var(--line)}
+  .section{padding:66px 0}
+  .donut-wrap{flex-direction:column;align-items:flex-start}
+  .hero-stats{gap:24px}
+  .cta-band{padding:46px 22px}
+  .chapter > summary{padding:18px}
+  .cbody{padding:6px 18px 22px}
+  .nav-cta .btn-ghost{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <svg class="mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="16" cy="16" r="15" stroke="#128A4E" stroke-width="2"/>
+        <circle cx="16" cy="16" r="4.6" fill="#2FB86B"/>
+        <circle cx="16" cy="4.5" r="2.4" fill="#128A4E"/>
+        <circle cx="26" cy="22" r="2.4" fill="#128A4E"/>
+        <circle cx="6" cy="22" r="2.4" fill="#128A4E"/>
+        <path d="M16 7.5 16 11.4M22.9 19.6 19.4 17.7M9.1 19.6 12.6 17.7" stroke="#5BE38A" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      Open Network
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#problem">Problem</a>
+      <a href="#poav">Proof of Value</a>
+      <a href="#bridge">Value Bridge</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#whitepaper">Whitepaper</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#whitepaper" class="btn btn-ghost btn-sm">Read whitepaper</a>
+      <a href="#start" class="btn btn-primary btn-sm">Start mining</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="tag-live"><span class="dot-live"></span>Pre-mainnet · Open mining is live</span>
+      <h1 class="hero-title">Mine value, not just <em>numbers.</em></h1>
+      <p class="hero-sub">Open Network is a mobile-first crypto network where a single daily tap builds your stake — and where every token is backed by real, on-chain auditable value, not hype. Open to everyone, owned by everyone.</p>
+      <div class="hero-cta">
+        <a href="#start" class="btn btn-primary">Start mining free</a>
+        <a href="#poav" class="btn btn-ghost">How it works</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="num" data-count="10">10B</div><div class="lbl">Fixed max supply</div></div>
+        <div class="hstat"><div class="num">0&nbsp;kWh</div><div class="lbl">Phone battery cost</div></div>
+        <div class="hstat"><div class="num">100%</div><div class="lbl">Of revenue on-chain</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <!-- network constellation -->
+      <svg class="constellation" viewBox="0 0 480 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g stroke="#9FDCBC" stroke-width="1.2" opacity=".7">
+          <path d="M70 110 L210 60 M210 60 L380 130 M70 110 L120 300 M210 60 L240 250 M380 130 L410 320 M120 300 L240 250 M240 250 L410 320 M120 300 L90 470 M240 250 L300 470 M410 320 L380 500 M90 470 L300 470 M300 470 L380 500"/>
+        </g>
+        <g fill="#2FB86B">
+          <circle cx="70" cy="110" r="5"/><circle cx="210" cy="60" r="6"/><circle cx="380" cy="130" r="5"/>
+          <circle cx="120" cy="300" r="5"/><circle cx="240" cy="250" r="7"/><circle cx="410" cy="320" r="5"/>
+          <circle cx="90" cy="470" r="5"/><circle cx="300" cy="470" r="6"/><circle cx="380" cy="500" r="5"/>
+        </g>
+        <g fill="#5BE38A"><circle cx="210" cy="60" r="11" opacity=".25"/><circle cx="240" cy="250" r="13" opacity=".25"/><circle cx="300" cy="470" r="11" opacity=".25"/></g>
+      </svg>
+      <!-- phone -->
+      <div class="phone">
+        <div class="screen">
+          <div class="scr-top">
+            <div><div class="bal-lbl">Your balance</div></div>
+            <div class="scr-streak">🔥 41-day streak</div>
+          </div>
+          <div class="scr-bal">2,184.6 <span>OPEN</span></div>
+          <div class="scr-rate">+0.62 OPEN / hr · base rate</div>
+          <div class="surge">
+            <div><div class="s-t">⚡ Surge window open</div></div>
+            <div class="s-time">02:14:08</div>
+          </div>
+          <div class="mine-zone">
+            <div class="mine-btn">
+              <span class="mb-ico">⛏️</span>
+              <span class="mb-t">Session active</span>
+            </div>
+            <div class="mine-cap">Tap once a day to keep your circle mining. No background drain.</div>
+          </div>
+          <div class="scr-nav">
+            <div class="on"><b>⛏</b>Mine</div>
+            <div><b>◎</b>Circle</div>
+            <div><b>✓</b>Tasks</div>
+            <div><b>⚖</b>Vote</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<div class="proof">
+  <div class="wrap proof-inner">
+    <span class="p-lbl">Built on principles that previous mobile-mining projects abandoned</span>
+    <div class="proof-pills">
+      <span class="pp"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 1l2 4 4 .5-3 3 .8 4L8 14.5 4.2 16.5 5 12.5 2 9.5 6 9z" fill="#2FB86B"/></svg>Real value backing</span>
+      <span class="pp"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.4" stroke="#128A4E" stroke-width="1.6"/><path d="M5 8l2 2 4-4.4" stroke="#128A4E" stroke-width="1.6" stroke-linecap="round"/></svg>Fully auditable</span>
+      <span class="pp"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="2.5" y="2.5" width="11" height="11" rx="3" stroke="#128A4E" stroke-width="1.6"/><circle cx="8" cy="8" r="2.2" fill="#2FB86B"/></svg>Sybil-resistant</span>
+      <span class="pp"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 1.5v13M2 5l6-3.5L14 5M2 11l6 3.5L14 11" stroke="#128A4E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Community-governed</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="section" id="problem">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="eyebrow">The problem</span>
+      <h2>Mobile mining promised inclusion. Most of it delivered empty points.</h2>
+      <p>A wave of tap-to-mine apps onboarded hundreds of millions of people — then stalled. The pattern repeats: tokens with no underlying value, opaque treasuries, and no path to a real economy. Open Network is a direct response to five recurring failures.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card reveal"><div class="ico">🚪</div><span class="k">Barrier #1</span><h3>High entry barriers</h3><p>Traditional mining demands hardware, electricity, and technical literacy most people will never have. Participation became a privilege, not a right.</p></div>
+      <div class="card reveal"><div class="ico">⚡</div><span class="k">Barrier #2</span><h3>Energy &amp; resource inequality</h3><p>Proof-of-Work concentrates rewards where power is cheapest. The people most in need of open finance are priced out of producing it.</p></div>
+      <div class="card reveal"><div class="ico">🫧</div><span class="k">Barrier #3</span><h3>Tokens with no value floor</h3><p>"Mine now, value later" rarely arrives. With no revenue and no demand engine, emissions inflate supply until the token rounds to zero.</p></div>
+      <div class="card reveal"><div class="ico">🕶️</div><span class="k">Barrier #4</span><h3>Opaque governance</h3><p>Closed teams hold the keys, the treasury, and the roadmap. Users contribute attention and data with no real say and no visibility.</p></div>
+      <div class="card reveal"><div class="ico">📉</div><span class="k">Barrier #5</span><h3>Broken mining incentives</h3><p>Bot farms drain rewards meant for real humans, while genuine engagement goes unrewarded. The incentive layer rewards the wrong behavior.</p></div>
+      <div class="card reveal" style="background:linear-gradient(160deg,var(--mint),#fff);border-color:var(--mint-2)"><div class="ico" style="background:#fff">🧭</div><span class="k">Open Network's answer</span><h3>Fix the economics first</h3><p>Value backing, transparent treasury, human-only mining and on-chain governance — designed in from block zero, not bolted on later.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="section alt">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">The Open Network solution</span>
+      <h2 class="s-head" style="margin-bottom:30px;font-size:clamp(28px,3.4vw,42px)">Four commitments that hold under pressure</h2>
+      <div class="principle"><div class="pn">01</div><div><h4>Open participation</h4><p>If you have a phone, you can mine. No hardware, no fees, no gatekeeping — the network grows by including, never excluding.</p></div></div>
+      <div class="principle"><div class="pn">02</div><div><h4>Mobile-first architecture</h4><p>Consensus and security run on validator nodes; phones act as light clients that secure their identity without draining battery or data.</p></div></div>
+      <div class="principle"><div class="pn">03</div><div><h4>Value-driven, sustainable economy</h4><p>Real revenue continuously flows back into the token through the Value Bridge — demand that exists whether or not the price is rising.</p></div></div>
+      <div class="principle"><div class="pn">04</div><div><h4>Provable transparency</h4><p>Treasury balances, buy-backs and reward distributions are published on-chain. Trust is verified by anyone, not asserted by the team.</p></div></div>
+    </div>
+    <div class="panel reveal">
+      <span class="pmono">// design.principles</span>
+      <h3>Openness, by construction</h3>
+      <p style="color:#bfe3cf;font-size:15px;margin-top:6px">Each principle maps to a concrete mechanism in the protocol.</p>
+      <ul>
+        <li><svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b style="color:#fff">Open participation</b> → Trust Circle 2.0 social graph</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b style="color:#fff">Mobile-first</b> → Federated Byzantine Agreement + light nodes</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b style="color:#fff">Value economy</b> → The Value Bridge buy-back engine</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b style="color:#fff">Transparency</b> → OpenDAO + public treasury dashboard</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- POAV -->
+<section class="section" id="poav">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="eyebrow">Proof of Active Value · PoAV</span>
+      <h2>Rewards follow real contribution, not raw time online</h2>
+      <p>Instead of paying for idle presence, Open Network measures a daily Value Point (VP) score across four dimensions. Your share of the daily reward pool equals your share of total Value Points — a design that bots can't farm and whales can't dominate.</p>
+    </div>
+    <div class="poav-grid">
+      <div class="vp reveal"><span class="w">w₁</span><div class="vico">🔥</div><h4>Streak Score</h4><p>Consistency over intensity. Uninterrupted daily sessions compound, with diminishing returns to prevent hoarding.</p></div>
+      <div class="vp reveal"><span class="w">w₂</span><div class="vico">✅</div><h4>Task Score</h4><p>Verified actions that create network value — sponsored quests, learning modules, ecosystem usage.</p></div>
+      <div class="vp reveal"><span class="w">w₃</span><div class="vico">⚖️</div><h4>Governance Score</h4><p>Participation in OpenDAO: proposal voting, delegation, and constructive review of treasury decisions.</p></div>
+      <div class="vp reveal"><span class="w">w₄</span><div class="vico">🌱</div><h4>Ecosystem Score</h4><p>Building, referring real humans, providing liquidity, or running services that strengthen the network.</p></div>
+    </div>
+    <div class="formula reveal">
+      <div><span class="d">// daily value score for participant i</span></div>
+      <div>VP<sub>i</sub> = <span class="c">w₁</span>·Streak<sub>i</sub> + <span class="c">w₂</span>·Task<sub>i</sub> + <span class="c">w₃</span>·Gov<sub>i</sub> + <span class="c">w₄</span>·Eco<sub>i</sub></div>
+      <div>Reward<sub>i</sub> = DailyPool × ( VP<sub>i</sub> / <span class="c">Σ</span> VP )</div>
+      <span class="small">Weights (w₁…w₄) adapt over time toward the behaviors the network needs most — early phases favor streak &amp; growth, later phases shift weight to governance &amp; ecosystem. All weights are governed on-chain.</span>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE BRIDGE -->
+<section class="section alt" id="bridge">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="eyebrow">The Value Bridge</span>
+      <h2>Turning attention into a real, recurring value floor</h2>
+      <p>Most mined tokens have no buyers. The Value Bridge fixes that: revenue earned from the network's own activity is converted into continuous, transparent demand for OPEN — creating a value floor that does not depend on speculation.</p>
+    </div>
+    <div class="flow reveal">
+      <div class="step"><span class="fn">01 · Source</span><div class="fi">📺</div><h4>Revenue is earned</h4><p>Rewarded ads, sponsored tasks, and premium features generate real stablecoin revenue from engaged users.</p></div>
+      <div class="step"><span class="fn">02 · Route</span><div class="fi">🏦</div><h4>Flows to treasury</h4><p>A governed share of net revenue is routed into the Value &amp; Liquidity Fund instead of private pockets.</p></div>
+      <div class="step"><span class="fn">03 · Convert</span><div class="fi">🔁</div><h4>Scheduled buy-backs</h4><p>The fund executes programmatic open-market buy-backs of OPEN and deepens protocol-owned liquidity.</p></div>
+      <div class="step"><span class="fn">04 · Prove</span><div class="fi">🔍</div><h4>Published on-chain</h4><p>Every inflow, buy-back and burn is written to a public dashboard. Anyone can audit the value floor.</p></div>
+    </div>
+    <div class="note" style="margin-top:26px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:18px 22px;font-size:15px;color:var(--muted)">
+      <b style="color:var(--ink)">Why this matters:</b> The bridge connects the attention economy to the token economy. As real usage grows, buy-back pressure grows with it — so value accrues from <em>doing</em>, not just <em>holding</em>.
+    </div>
+  </div>
+</section>
+
+<!-- TOKENOMICS -->
+<section class="section" id="tokenomics">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="eyebrow">Tokenomics</span>
+      <h2>A fixed-supply token engineered for longevity</h2>
+      <p>OPEN has a hard cap of 10 billion. The majority is mined by the community over a long, halving emission schedule, while a transparent set of reserves funds liquidity, growth and a vested team.</p>
+    </div>
+    <div class="tok-grid reveal">
+      <div class="donut-wrap">
+        <div class="donut">
+          <div class="center-l"><b>10B</b><span>OPEN · max</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="legend" style="margin-bottom:26px">
+          <div class="li"><span class="sw" style="background:var(--green)"></span>Mining &amp; community rewards <b>60%</b></div>
+          <div class="li"><span class="sw" style="background:var(--leaf)"></span>Value &amp; Liquidity Fund <b>13%</b></div>
+          <div class="li"><span class="sw" style="background:#7CD3A2"></span>Community Treasury <b>12%</b></div>
+          <div class="li"><span class="sw" style="background:var(--ink)"></span>Core team &amp; partners <b>15%</b></div>
+        </div>
+        <div class="tok-facts">
+          <div class="fct"><div class="fl">Ticker</div><div class="fv">OPEN</div></div>
+          <div class="fct"><div class="fl">Max supply</div><div class="fv">10,000,000,000</div></div>
+          <div class="fct"><div class="fl">Emission</div><div class="fv">Halving <small>per growth milestone</small></div></div>
+          <div class="fct"><div class="fl">Team vesting</div><div class="fv">12 + 36 <small>mo cliff/linear</small></div></div>
+        </div>
+      </div>
+    </div>
+
+    <table class="dt reveal">
+      <thead><tr><th>Allocation</th><th>Share</th><th>Tokens</th><th>Unlock</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><span class="swt" style="background:var(--green)"></span>Mining &amp; community rewards</td><td class="mono">60%</td><td class="mono">6,000,000,000</td><td>Mined over emission schedule</td><td>Distributed daily via PoAV</td></tr>
+        <tr><td><span class="swt" style="background:var(--leaf)"></span>Value &amp; Liquidity Fund</td><td class="mono">13%</td><td class="mono">1,300,000,000</td><td>Programmatic</td><td>Buy-backs &amp; protocol-owned liquidity</td></tr>
+        <tr><td><span class="swt" style="background:#7CD3A2"></span>Community Treasury</td><td class="mono">12%</td><td class="mono">1,200,000,000</td><td>OpenDAO-controlled</td><td>Grants, audits, ecosystem</td></tr>
+        <tr><td><span class="swt" style="background:var(--ink)"></span>Core team &amp; strategic partners</td><td class="mono">15%</td><td class="mono">1,500,000,000</td><td>12-mo cliff, 36-mo linear</td><td>Long-term alignment</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="eyebrow">Technical architecture</span>
+      <h2>Secure consensus, mobile-light verification</h2>
+      <p>Open Network uses Federated Byzantine Agreement (FBA) for fast, low-energy finality, with a social-graph identity layer that keeps the network human.</p>
+    </div>
+    <div class="arch reveal">
+      <div class="layer">
+        <span class="ln">Layer · Consensus</span>
+        <h4>Federated Byzantine Agreement</h4>
+        <p>Validator nodes reach agreement through overlapping quorum slices — no mining race, no energy waste, deterministic finality in seconds.</p>
+        <div class="chips"><span class="chip">Validator nodes</span><span class="chip">Quorum slices</span><span class="chip">Fast finality</span></div>
+      </div>
+      <div class="layer">
+        <span class="ln">Layer · Mobile</span>
+        <h4>Light nodes on every phone</h4>
+        <p>Phones run as light clients that authenticate identity and submit mining proofs, syncing headers without storing the full chain.</p>
+        <div class="chips"><span class="chip">Light clients</span><span class="chip">Header sync</span><span class="chip">Zero battery drain</span></div>
+      </div>
+      <div class="layer">
+        <span class="ln">Layer · Identity</span>
+        <h4>Trust Circle 2.0</h4>
+        <p>A social graph and proof-of-uniqueness layer with mutual accountability — vouching for a bot risks your own rewards.</p>
+        <div class="chips"><span class="chip">Social graph</span><span class="chip">Proof of uniqueness</span><span class="chip">Slashing</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="section" id="roadmap">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="eyebrow">Roadmap</span>
+      <h2>Ten phases from first spark to sustainable openness</h2>
+      <p>A deliberate path: build the community, prove the value, decentralize control, then connect to the wider economy. No phase ships until the one before it is real.</p>
+    </div>
+    <div class="road reveal">
+      <div class="phase done"><div class="pnode">1</div><div class="ph-top"><h4>The First Spark</h4><span class="ph-tag tag-done">Shipped</span></div><p>Launch the mobile app and open mining. Seed the earliest community and validate streak-based engagement.</p><div class="deliver"><span>iOS &amp; Android app</span><span>Tap-to-mine</span><span>Referral genesis</span></div></div>
+      <div class="phase done"><div class="pnode">2</div><div class="ph-top"><h4>The Open Door</h4><span class="ph-tag tag-done">Shipped</span></div><p>Roll out Trust Circle 2.0, the social graph and proof-of-uniqueness layer that keeps mining human.</p><div class="deliver"><span>Trust Circle 2.0</span><span>Sybil defense</span><span>Task engine v1</span></div></div>
+      <div class="phase now"><div class="pnode">3</div><div class="ph-top"><h4>The Value Bridge</h4><span class="ph-tag tag-now">In progress</span></div><p>Activate the revenue → buy-back engine and publish the live treasury dashboard. The token's value floor goes live.</p><div class="deliver"><span>Rewarded revenue</span><span>Buy-back automation</span><span>Public dashboard</span></div></div>
+      <div class="phase"><div class="pnode">4</div><div class="ph-top"><h4>The Trust Trial</h4><span class="ph-tag tag-next">Next</span></div><p>Scale uniqueness verification and stress-test Sybil resistance before any tokens become transferable.</p><div class="deliver"><span>Uniqueness at scale</span><span>Red-team audits</span></div></div>
+      <div class="phase"><div class="pnode">5</div><div class="ph-top"><h4>Open Mainnet</h4><span class="ph-tag tag-next">Planned</span></div><p>Migrate verified balances to mainnet. OPEN becomes a real, transferable on-chain asset.</p><div class="deliver"><span>Mainnet genesis</span><span>Balance migration</span><span>Wallet</span></div></div>
+      <div class="phase"><div class="pnode">6</div><div class="ph-top"><h4>Open Trade</h4><span class="ph-tag tag-next">Planned</span></div><p>Deepen protocol-owned liquidity and pursue listings, giving the value floor a transparent market.</p><div class="deliver"><span>DEX liquidity</span><span>Exchange listings</span></div></div>
+      <div class="phase"><div class="pnode">7</div><div class="ph-top"><h4>Open Ecosystem</h4><span class="ph-tag tag-next">Planned</span></div><p>Release the SDK and grant program so third parties can build dApps that earn and spend OPEN.</p><div class="deliver"><span>Developer SDK</span><span>Grants</span><span>First dApps</span></div></div>
+      <div class="phase"><div class="pnode">8</div><div class="ph-top"><h4>OpenDAO</h4><span class="ph-tag tag-next">Planned</span></div><p>Hand the treasury, parameters and roadmap to on-chain governance. The community takes the keys.</p><div class="deliver"><span>On-chain voting</span><span>Treasury handover</span></div></div>
+      <div class="phase"><div class="pnode">9</div><div class="ph-top"><h4>Global Bridges</h4><span class="ph-tag tag-next">Planned</span></div><p>Connect OPEN across chains and into real-world rails, expanding where value can flow.</p><div class="deliver"><span>Cross-chain bridges</span><span>Fiat on/off-ramps</span></div></div>
+      <div class="phase"><div class="pnode">10</div><div class="ph-top"><h4>Sustainable Openness</h4><span class="ph-tag tag-next">Vision</span></div><p>A self-funding, self-governing network where emissions taper and real usage sustains the economy indefinitely.</p><div class="deliver"><span>Self-sustaining treasury</span><span>Mature dApp economy</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GOVERNANCE -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="eyebrow">Governance · OpenDAO</span>
+      <h2>The network's future is decided by the people who built it</h2>
+      <p>OpenDAO progressively takes control of the treasury, protocol parameters and upgrades — moving Open Network from a team-led project to a community-owned public good.</p>
+    </div>
+    <div class="gov">
+      <div class="card reveal"><div class="ico">🗳️</div><h3>Propose &amp; vote</h3><p>Any qualified member can submit a proposal. Voting power blends holdings with earned Governance Score, so contribution counts — not just capital.</p></div>
+      <div class="card reveal"><div class="ico">💚</div><h3>Steward the treasury</h3><p>Grants, audits and buy-back parameters are approved on-chain. Spending is transparent and reversible by the community.</p></div>
+      <div class="card reveal"><div class="ico">🔧</div><h3>Upgrade the protocol</h3><p>Parameter changes and upgrades pass through timelocked, audited governance — no silent changes, no admin backdoors.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHITEPAPER -->
+<section class="section" id="whitepaper">
+  <div class="wrap">
+    <div class="s-head center reveal">
+      <span class="eyebrow">Whitepaper · v1.0</span>
+      <h2>The full Open Network whitepaper</h2>
+      <p>Every chapter, expanded. Tap any section to read. This document is for information only and is not an offer of securities or financial advice.</p>
+    </div>
+
+    <div class="wp">
+      <aside class="wp-toc reveal">
+        <div class="tt">Contents</div>
+        <a href="#wp-1">1 · Introduction</a>
+        <a href="#wp-2">2 · Problem Statement</a>
+        <a href="#wp-3">3 · The Open Network Solution</a>
+        <a href="#wp-4">4 · Technical Architecture</a>
+        <a href="#wp-5">5 · Proof of Active Value</a>
+        <a href="#wp-6">6 · Tokenomics</a>
+        <a href="#wp-7">7 · The Value Bridge</a>
+        <a href="#wp-8">8 · Governance (OpenDAO)</a>
+        <a href="#wp-9">9 · Roadmap</a>
+        <a href="#wp-10">10 · Security &amp; Risk</a>
+        <a href="#wp-11">11 · Ecosystem &amp; Vision</a>
+        <a href="#wp-12">12 · Team &amp; Advisors</a>
+        <a href="#wp-13">13 · Conclusion</a>
+        <a href="#wp-14">14 · References</a>
+        <a href="#wp-15">15 · Appendices</a>
+      </aside>
+
+      <div class="wp-doc">
+
+        <!-- CH 1 -->
+        <details class="chapter reveal" id="wp-1" open>
+          <summary><span class="cn">1</span><h3>Introduction</h3><svg class="chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="cbody">
+            <h4><span class="sub">1.1</span>The evolution of digital value and today's problems</h4>
+            <p>Digital value has moved from closed ledgers held by single institutions to open, programmable networks. Yet the promise of open finance remains unevenly delivered. Producing crypto-economic value still favors those with capital, hardware and technical fluency, while billions of mobile-only users are left as spectators. Where mobile mining tried to close that gap, it too often substituted real value with inflationary points.</p>
+            <h4><span class="sub">1.2</span>From closed systems to open networks: the Open Network vision</h4>
+            <p>Open Network reframes mining as participation rather than computation. The vision is a network anyone can join from a phone, where contribution is measured fairly, value is backed by real revenue, and control is progressively handed to the community. "Open" is not branding — it is the operating principle behind participation, economics and governance alike.</p>
+            <h4><span class="sub">1.3</span>Purpose and scope of this document</h4>
+            <p>This whitepaper describes the motivation, mechanisms, economics and governance of Open Network, along with its roadmap and risk posture. It is a living technical and strategic document, not a contract. Parameters described here may evolve through OpenDAO governance.</p>
+          </div>
+        </details>
+
+        <!-- CH 2 -->
+        <details class="chapter reveal" id="wp-2">
+          <summary><span class="cn">2</span><h3>Problem Statement</h3><svg class="chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="cbody">
+            <h4><span class="sub">2.1</span>High participation barriers</h4>
+            <p>Proof-of-Work and most staking systems require capital, specialized hardware, or technical setup. This excludes precisely the populations that stand to gain most from open, borderless value.</p>
+            <h4><span class="sub">2.2</span>Energy and resource inequality</h4>
+            <p>Energy-intensive consensus concentrates rewards geographically and economically. The result is an extractive system whose benefits rarely reach ordinary participants.</p>
+            <h4><span class="sub">2.3</span>Token economies with no value base</h4>
+            <p>Many mobile tokens promise future utility but never generate revenue or sustained demand. Unbounded emissions then dilute supply until the asset is effectively worthless.</p>
+            <h4><span class="sub">2.4</span>Opaque governance and trust deficits</h4>
+            <p>Closed teams control treasuries, parameters and timelines with little disclosure. Users cannot verify how value is created, held, or spent — so trust must be assumed rather than checked.</p>
+            <h4><span class="sub">2.5</span>Failures of existing mobile-mining solutions</h4>
+            <ul>
+              <li><b>No demand engine:</b> tokens are mined faster than they are ever bought.</li>
+              <li><b>Bot saturation:</b> automated accounts capture rewards meant for humans.</li>
+              <li><b>Endless pre-mainnet:</b> launch dates slip indefinitely while balances stay illiquid.</li>
+              <li><b>Misaligned incentives:</b> teams monetize attention privately rather than returning value to participants.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- CH 3 -->
+        <details class="chapter reveal" id="wp-3">
+          <summary><span class="cn">3</span><h3>The Open Network Solution</h3><svg class="chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="cbody">
+            <h4><span class="sub">3.1</span>Philosophy of open participation</h4>
+            <p>Anyone with a phone can mine, with no fees or hardware. Growth comes from inclusion; the network's strength is the number of unique, real humans it serves.</p>
+            <h4><span class="sub">3.2</span>Mobile-first architecture</h4>
+            <p>Heavy consensus runs on validator nodes; phones operate as light clients. Mining proofs are lightweight, so participation costs no meaningful battery, data or storage.</p>
+            <h4><span class="sub">3.3</span>Value-driven, sustainable economy</h4>
+            <p>The Value Bridge channels real revenue into continuous buy-backs and protocol-owned liquidity, giving OPEN a value floor independent of speculation.</p>
+            <h4><span class="sub">3.4</span>The principle of provable transparency</h4>
+            <p>Treasury flows, buy-backs, emissions and votes are published on-chain. Trust is earned through verifiability, and governance ultimately rests with the community.</p>
+          </div>
+        </details>
+
+        <!-- CH 4 -->
+        <details class="chapter reveal" id="wp-4">
+          <summary><span class="cn">4</span><h3>Technical Architecture</h3><svg class="chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="cbody">
+            <h4><span class="sub">4.1</span>Network architecture and layers</h4>
+            <p>Open Network is organized in three layers: a <b>consensus layer</b> of validator nodes, a <b>mobile layer</b> of light clients, and an <b>identity layer</b> that proves uniqueness. Applications and the Value Bridge run as services on top.</p>
+            <h4><span class="sub">4.2</span>Consensus: Federated Byzantine Agreement (FBA)</h4>
+            <p>FBA achieves fast, energy-light finality without a mining race. Nodes form trust relationships and agree through overlapping quorums.</p>
+            <h4><span class="sub">4.2.1</span>Validator nodes</h4>
+            <p>Validators propose and confirm blocks, maintain the full ledger, and are accountable for liveness and safety. Anyone meeting the requirements can run one.</p>
+            <h4><span class="sub">4.2.2</span>Light nodes and mobile integration</h4>
+            <p>Phones run as light nodes: they verify block headers, submit mining and identity proofs, and never carry the full chain — keeping the experience instant and cheap.</p>
+            <h4><span class="sub">4.2.3</span>Quorum slices and the trust model</h4>
+            <p>Each node selects quorum slices it trusts. System-wide agreement emerges from the overlap of these slices, producing resilience without a central authority.</p>
+            <h4><span class="sub">4.3</span>Sybil resistance: Trust Circle 2.0</h4>
+            <h4><span class="sub">4.3.1</span>Social graph and proof of uniqueness</h4>
+            <p>Members vouch for people they know, forming a social graph. Combined with privacy-preserving uniqueness checks, this makes one-human-one-account economically enforced.</p>
+            <h4><span class="sub">4.3.2</span>Mutual accountability and penalties</h4>
+            <p>Vouching carries responsibility. If a vouched account is found to be fraudulent, the voucher's rewards and standing are slashed — making collusion costly.</p>
+          </div>
+        </details>
+
+        <!-- CH 5 -->
+        <details class="chapter reveal" id="wp-5">
+          <summary><span class="cn">5</span><h3>Proof of Active Value (PoAV)</h3><svg class="chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="cbody">
+            <h4><span class="sub">5.1</span>Theoretical framework and purpose</h4>
+            <p>PoAV rewards meaningful contribution rather than idle presence or raw capital. It is the distribution mechanism that keeps mining fair, human and aligned with network growth.</p>
+            <h4><span class="sub">5.2</span>Value Point (VP) components and model</h4>
+            <p>Each participant earns a daily VP score from four sources:</p>
+            <h4><span class="sub">5.2.1</span>Streak Score</h4>
+            <p>Rewards consistent daily participation, with diminishing returns so no single dimension dominates.</p>
+            <h4><span class="sub">5.2.2</span>Task Score</h4>
+            <p>Rewards verified value-creating actions: sponsored tasks, education, and genuine ecosystem usage.</p>
+            <h4><span class="sub">5.2.3</span>Governance Score</h4>
+            <p>Rewards informed participation in OpenDAO — voting, delegating and reviewing proposals.</p>
+            <h4><span class="sub">5.2.4</span>Ecosystem Score</h4>
+            <p>Rewards building, real-human referrals, liquidity provision and running network services.</p>
+            <h4><span class="sub">5.3</span>Dynamic weighting and adaptive incentives</h4>
+            <p>Weights w₁…w₄ shift across phases — early on toward growth and consistency, later toward governance and ecosystem depth — under OpenDAO control.</p>
+            <h4><span class="sub">5.4</span>Daily reward distribution algorithm</h4>
+            <div class="eq">VP<sub>i</sub> = <span class="c">w₁</span>·Streak<sub>i</sub> + <span class="c">w₂</span>·Task<sub>i</sub> + <span class="c">w₃</span>·Gov<sub>i</sub> + <span class="c">w₄</span>·Eco<sub>i</sub><br>Reward<sub>i</sub> = DailyPool × ( VP<sub>i</sub> / Σ<sub>j</sub> VP<sub>j</sub> )</div>
+            <p>A participant's daily reward equals their share of total Value Points multiplied by that day's emission pool.</p>
+          </div>
+        </details>
+
+        <!-- CH 6 -->
+        <details class="chapter reveal" id="wp-6">
+          <summary><span class="cn">6</span><h3>Tokenomics</h3><svg class="chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="cbody">
+            <h4><span class="sub">6.1</span>Token definition and technical properties</h4>
+            <p>OPEN is the native token of Open Network. Before mainnet it exists as verified mining balances; at mainnet it becomes a transferable on-chain asset with bridgeable representations on major chains.</p>
+            <h4><span class="sub">6.2</span>Total supply and distribution model</h4>
+            <p>Supply is hard-capped at <b>10,000,000,000 OPEN</b>.</p>
+            <table>
+              <thead><tr><th>Allocation</th><th>Share</th><th>Tokens</th></tr></thead>
+              <tbody>
+                <tr><td>Mining &amp; community rewards</td><td class="m">60%</td><td class="m">6,000,000,000</td></tr>
+                <tr><td>Value &amp; Liquidity Fund</td><td class="m">13%</td><td class="m">1,300,000,000</td></tr>
+                <tr><td>Community Treasury</td><td class="m">12%</td><td class="m">1,200,000,000</td></tr>
+                <tr><td>Core team &amp; strategic partners</td><td class="m">15%</td><td class="m">1,500,000,000</td></tr>
+              </tbody>
+            </table>
+            <h4><span class="sub">6.2.1</span>Community Treasury</h4>
+            <p>Funds grants, audits and ecosystem development, governed by OpenDAO.</p>
+            <h4><span class="sub">6.2.2</span>Value &amp; Liquidity Fund</h4>
+            <p>Receives Value Bridge revenue and executes buy-backs and protocol-owned liquidity.</p>
+            <h4><span class="sub">6.2.3</span>Team &amp; strategic partner allocation</h4>
+            <p>Subject to a 12-month cliff and 36-month linear vesting to ensure long-term alignment.</p>
+            <h4><span class="sub">6.3</span>Emission schedule and halving model</h4>
+            <p>The base mining rate halves at defined user-growth milestones (e.g. 1M, 10M, 50M, 100M verified humans), so early contribution is rewarded while long-term supply stays scarce.</p>
+            <h4><span class="sub">6.4</span>Token utility</h4>
+            <ul>
+              <li>Governance voting and delegation in OpenDAO.</li>
+              <li>Payment for ecosystem dApps, services and premium features.</li>
+              <li>Liquidity provision and staking for network services.</li>
+              <li>Settlement and fees across the network.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- CH 7 -->
+        <details class="chapter reveal" id="wp-7">
+          <summary><span class="cn">7</span><h3>The Value Bridge</h3><svg class="chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="cbody">
+            <h4><span class="sub">7.1</span>Conceptual basis: creating value from the attention economy</h4>
+            <p>Engaged users already generate revenue through advertising and sponsorship. The Value Bridge captures that revenue for the network instead of a private entity, then converts it into demand for OPEN.</p>
+            <h4><span class="sub">7.2</span>Revenue channels and user tasks</h4>
+            <ul>
+              <li><b>Rewarded ads</b> shown with consent during sessions.</li>
+              <li><b>Sponsored tasks</b> where partners pay for verified engagement.</li>
+              <li><b>Premium features</b> and ecosystem service fees.</li>
+            </ul>
+            <h4><span class="sub">7.3</span>Liquidity pool mechanism and automated buy-backs</h4>
+            <p>A governed share of net revenue funds scheduled, programmatic open-market buy-backs and deepens protocol-owned liquidity — translating usage directly into price support.</p>
+            <h4><span class="sub">7.4</span>On-chain auditability and transparency</h4>
+            <p>Every inflow, conversion, buy-back and burn is recorded on-chain and surfaced on a public dashboard, so the value floor is independently verifiable at any time.</p>
+          </div>
+        </details>
+
+        <!-- CH 8 -->
+        <details class="chapter reveal" id="wp-8">
+          <summary><span class="cn">8</span><h3>Governance Model (OpenDAO)</h3><svg class="chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="cbody">
+            <h4><span class="sub">8.1</span>Decentralized governance philosophy</h4>
+            <p>Control over the protocol moves progressively from the founding team to the community, until OpenDAO holds the treasury, parameters and upgrade authority.</p>
+            <h4><span class="sub">8.2</span>Proposal and voting mechanism</h4>
+            <p>Qualified members submit proposals that proceed through discussion, on-chain voting and a timelock. Voting power blends token holdings with earned Governance Score, valuing contribution alongside capital.</p>
+            <h4><span class="sub">8.3</span>Management of the Community Treasury</h4>
+            <p>All treasury spending — grants, audits, buy-back parameters — is approved on-chain and publicly traceable.</p>
+            <h4><span class="sub">8.4</span>Protocol upgrade and change processes</h4>
+            <p>Upgrades pass through audited, timelocked governance with no admin backdoors, so no parameter can be changed silently.</p>
+          </div>
+        </details>
+
+        <!-- CH 9 -->
+        <details class="chapter reveal" id="wp-9">
+          <summary><span class="cn">9</span><h3>Roadmap</h3><svg class="chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="cbody">
+            <p>The roadmap proceeds in ten phases. Each builds the foundation for the next.</p>
+            <ul>
+              <li><b>Phase 1 — The First Spark:</b> launch the app and open mining; seed the founding community.</li>
+              <li><b>Phase 2 — The Open Door:</b> deploy Trust Circle 2.0 and the task engine.</li>
+              <li><b>Phase 3 — The Value Bridge:</b> activate revenue-funded buy-backs and the public treasury dashboard.</li>
+              <li><b>Phase 4 — The Trust Trial:</b> scale uniqueness verification and harden Sybil resistance.</li>
+              <li><b>Phase 5 — Open Mainnet:</b> migrate verified balances; OPEN becomes transferable.</li>
+              <li><b>Phase 6 — Open Trade:</b> deepen liquidity and pursue listings.</li>
+              <li><b>Phase 7 — Open Ecosystem:</b> ship the SDK, grants and first dApps.</li>
+              <li><b>Phase 8 — OpenDAO:</b> hand treasury and parameters to on-chain governance.</li>
+              <li><b>Phase 9 — Global Bridges:</b> cross-chain bridges and fiat on/off-ramps.</li>
+              <li><b>Phase 10 — Sustainable Openness:</b> a self-funding, self-governing network with tapering emissions.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- CH 10 -->
+        <details class="chapter reveal" id="wp-10">
+          <summary><span class="cn">10</span><h3>Security &amp; Risk Assessment</h3><svg class="chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="cbody">
+            <h4><span class="sub">10.1</span>Network security and attack vectors</h4>
+            <p>FBA's quorum design resists equivocation and partition attacks; validator diversity and monitoring guard liveness and safety.</p>
+            <h4><span class="sub">10.2</span>Sybil and bot resistance</h4>
+            <p>Trust Circle 2.0, proof-of-uniqueness and mutual-accountability slashing make large-scale fake-account farming economically irrational.</p>
+            <h4><span class="sub">10.3</span>Smart contract audits</h4>
+            <p>All economic and governance contracts undergo independent third-party audits and ongoing bug-bounty review before mainnet and after upgrades.</p>
+            <h4><span class="sub">10.4</span>Legal and regulatory compliance strategy</h4>
+            <p>Open Network engages qualified counsel across key jurisdictions and designs OPEN as a utility token, adapting to evolving regulation rather than ignoring it.</p>
+            <h4><span class="sub">10.5</span>Risk mitigation plans</h4>
+            <ul>
+              <li><b>Market risk:</b> the Value Bridge and protocol-owned liquidity provide a structural value floor.</li>
+              <li><b>Technical risk:</b> phased rollout, audits and red-teaming before each launch.</li>
+              <li><b>Governance risk:</b> timelocks, quorums and progressive decentralization.</li>
+              <li><b>Regulatory risk:</b> proactive compliance and jurisdictional flexibility.</li>
+            </ul>
+            <div class="note">No system is risk-free. Participation is voluntary, and the token may have no monetary value, especially before mainnet.</div>
+          </div>
+        </details>
+
+        <!-- CH 11 -->
+        <details class="chapter reveal" id="wp-11">
+          <summary><span class="cn">11</span><h3>Ecosystem &amp; Future Vision</h3><svg class="chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="cbody">
+            <h4><span class="sub">11.1</span>Developer toolkit and SDK</h4>
+            <p>A mobile-friendly SDK lets developers integrate identity, mining proofs and OPEN payments into their own apps with minimal effort.</p>
+            <h4><span class="sub">11.2</span>Grant program and developer incentives</h4>
+            <p>The Community Treasury funds grants, hackathons and revenue-share programs to bootstrap a vibrant builder community.</p>
+            <h4><span class="sub">11.3</span>Targeted decentralized applications (dApps)</h4>
+            <p>Priority categories include micro-payments, learn-to-earn, marketplaces, and reputation-based social apps that benefit from verified-human identity.</p>
+            <h4><span class="sub">11.4</span>Cross-chain future and multi-chain integration</h4>
+            <p>Bridges and standards will let OPEN and Open Network identity interoperate across major ecosystems, so value is not siloed on a single chain.</p>
+          </div>
+        </details>
+
+        <!-- CH 12 -->
+        <details class="chapter reveal" id="wp-12">
+          <summary><span class="cn">12</span><h3>Team &amp; Advisors</h3><svg class="chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="cbody">
+            <h4><span class="sub">12.1</span>Core development team</h4>
+            <p>A multidisciplinary team across mobile engineering, distributed systems, cryptography and token design. <span style="color:var(--soft)">[Add named profiles and links before publication.]</span></p>
+            <h4><span class="sub">12.2</span>Strategic advisors</h4>
+            <p>Advisors spanning crypto-economics, security and regulatory strategy guide major decisions. <span style="color:var(--soft)">[Add advisor profiles before publication.]</span></p>
+            <h4><span class="sub">12.3</span>Community ambassadors and contributors</h4>
+            <p>A global network of moderators, translators and ambassadors supports onboarding and education across regions and languages.</p>
+            <div class="note">Placeholder section — replace bracketed text with real names, photos and verifiable links before public release to maximize credibility.</div>
+          </div>
+        </details>
+
+        <!-- CH 13 -->
+        <details class="chapter reveal" id="wp-13">
+          <summary><span class="cn">13</span><h3>Conclusion</h3><svg class="chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="cbody">
+            <h4><span class="sub">13.1</span>An invitation to an open future</h4>
+            <p>Open Network treats access to value creation as a right, not a privilege. By backing the token with real revenue, keeping mining human, and handing control to the community, it aims to be the open economic layer that earlier mobile-mining projects promised but never built. The network is only as strong as the people in it — and it is open to everyone willing to help build it.</p>
+          </div>
+        </details>
+
+        <!-- CH 14 -->
+        <details class="chapter reveal" id="wp-14">
+          <summary><span class="cn">14</span><h3>References</h3><svg class="chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="cbody">
+            <ul>
+              <li>Nakamoto, S. — Bitcoin: A Peer-to-Peer Electronic Cash System.</li>
+              <li>Mazières, D. — The Stellar Consensus Protocol: Federated Byzantine Agreement.</li>
+              <li>Buterin, V. et al. — Ethereum and the foundations of programmable value.</li>
+              <li>Douceur, J. — The Sybil Attack.</li>
+              <li>Selected literature on proof-of-personhood and protocol-owned liquidity.</li>
+            </ul>
+            <div class="note">Replace with full, citable references and links before publication.</div>
+          </div>
+        </details>
+
+        <!-- CH 15 -->
+        <details class="chapter reveal" id="wp-15">
+          <summary><span class="cn">15</span><h3>Appendices</h3><svg class="chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="cbody">
+            <h4><span class="sub">15.1</span>Glossary of technical terms</h4>
+            <ul>
+              <li><b>FBA:</b> Federated Byzantine Agreement — consensus via overlapping quorum slices.</li>
+              <li><b>PoAV:</b> Proof of Active Value — Open Network's contribution-based reward model.</li>
+              <li><b>Value Point (VP):</b> daily contribution score driving reward distribution.</li>
+              <li><b>Light node:</b> a phone client that verifies headers without the full chain.</li>
+              <li><b>Trust Circle 2.0:</b> the social-graph + uniqueness identity layer.</li>
+            </ul>
+            <h4><span class="sub">15.2</span>Mathematical models and formulas</h4>
+            <div class="eq">VP<sub>i</sub> = Σ<sub>k</sub> w<sub>k</sub>·C<sub>k,i</sub> &nbsp;&nbsp;<span class="c">// C = component scores</span><br>Reward<sub>i</sub> = DailyPool × ( VP<sub>i</sub> / Σ<sub>j</sub> VP<sub>j</sub> )<br>Rate(t) = Rate₀ / 2^⌊milestones(t)⌋</div>
+            <h4><span class="sub">15.3</span>Token distribution tables</h4>
+            <table>
+              <thead><tr><th>Allocation</th><th>%</th><th>OPEN</th><th>Vesting</th></tr></thead>
+              <tbody>
+                <tr><td>Mining &amp; community</td><td class="m">60</td><td class="m">6,000,000,000</td><td>Emission schedule</td></tr>
+                <tr><td>Value &amp; Liquidity</td><td class="m">13</td><td class="m">1,300,000,000</td><td>Programmatic</td></tr>
+                <tr><td>Community Treasury</td><td class="m">12</td><td class="m">1,200,000,000</td><td>DAO-controlled</td></tr>
+                <tr><td>Team &amp; partners</td><td class="m">15</td><td class="m">1,500,000,000</td><td>12+36 mo</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" id="start">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2>Be part of the first spark.</h2>
+      <p>Mining is open and free. Start your streak today and earn your stake in an economy that's built to last — and owned by the people who build it.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-lime">Download the app</a>
+        <a href="#whitepaper" class="btn btn-outline-l">Read the whitepaper</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="brand">
+          <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="15" stroke="#128A4E" stroke-width="2"/>
+            <circle cx="16" cy="16" r="4.6" fill="#2FB86B"/>
+            <circle cx="16" cy="4.5" r="2.4" fill="#128A4E"/><circle cx="26" cy="22" r="2.4" fill="#128A4E"/><circle cx="6" cy="22" r="2.4" fill="#128A4E"/>
+            <path d="M16 7.5 16 11.4M22.9 19.6 19.4 17.7M9.1 19.6 12.6 17.7" stroke="#5BE38A" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          Open Network
+        </a>
+        <p>Mobile-first, value-backed, community-owned. Mining the open economy, one tap at a time.</p>
+      </div>
+      <div class="fcol">
+        <h5>Protocol</h5>
+        <a href="#poav">Proof of Value</a>
+        <a href="#bridge">Value Bridge</a>
+        <a href="#tokenomics">Tokenomics</a>
+        <a href="#roadmap">Roadmap</a>
+      </div>
+      <div class="fcol">
+        <h5>Learn</h5>
+        <a href="#whitepaper">Whitepaper</a>
+        <a href="#problem">The problem</a>
+        <a href="#">Glossary</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="fcol">
+        <h5>Community</h5>
+        <a href="#">Telegram</a>
+        <a href="#">X / Twitter</a>
+        <a href="#">Discord</a>
+        <a href="#">GitHub</a>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <strong>Legal disclaimer.</strong> This website and the Open Network whitepaper are provided for informational purposes only and do not constitute financial, investment, legal or tax advice, nor an offer or solicitation to buy or sell any security, token or financial instrument in any jurisdiction. OPEN is intended as a utility token; it may have no monetary value, particularly before mainnet, and any future value is not guaranteed. Cryptographic assets are volatile and high-risk, and you may lose everything you contribute. Forward-looking statements, including the roadmap, reflect current intentions only and may change. Availability may be restricted in certain jurisdictions; participation is your responsibility and subject to local law. Do your own research and consult qualified professionals before participating. Mechanisms and parameters described here may be changed through OpenDAO governance.
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Open Network. An open, community-driven project.</span>
+      <span class="mono">whitepaper · v1.0</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav
+  const burger=document.getElementById('burger'),links=document.getElementById('navLinks');
+  burger&&burger.addEventListener('click',()=>links.classList.toggle('open'));
+  links&&links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+
+  // scroll reveal
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // close other chapters when one opens (accordion feel, but allow free toggling)
+  document.querySelectorAll('.chapter').forEach(d=>{
+    d.addEventListener('toggle',()=>{
+      if(d.open){
+        // smooth scroll into view if mostly offscreen
+        const r=d.getBoundingClientRect();
+        if(r.top<70) d.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    });
+  });
+</script>
+</body>
+</html>
