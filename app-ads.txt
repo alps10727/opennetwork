@@ -1,3 +1,7 @@
 google.com, pub-4888450833170996, DIRECT, f08c47fec0942fa0
 vungle.com, 69aabd772eb00c1bc8c25df4, DIRECT, c107d686becd2d77
 pubmatic.com, 159856, DIRECT, 5d62403b186f2ace
+smartadserver.com, 4194-OB, RESELLER, 060d053dcf45cbf3
+smartadserver.com, 4194, RESELLER, 060d053dcf45cbf3
+sharethrough.com, 4194-OB, RESELLER, 060d053dcf45cbf3
+sharethrough.com, 4194, RESELLER, 060d053dcf45cbf3
